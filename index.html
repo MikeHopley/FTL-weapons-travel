@@ -1,0 +1,135 @@
+<html>
+<head>
+	<title>FTL weapon travel times</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@riophae/vue-treeselect@^0.4.0/dist/vue-treeselect.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="stack">
+	<h1>FTL weapon travel times</h1>
+
+<div id="app">
+	<div id="main" class="unstack">	
+		<div class="weapons-selection">
+			<treeselect v-model="weapon" 
+				:options="options"
+				:disable-branch-nodes="true"
+				:max-height="400"
+				:disable-fuzzy-matching="true"
+				placeholder="Select, or type weapon name">
+			</treeselect>
+		</div>
+	</div>
+
+	<p>All times are in seconds.</p>
+
+	<div v-if="weapon" class="numbers">
+		<table>
+			<tr>
+				<th>Firing delay</th>
+				<th v-if="times.speed">Speed<sup>1</sup></th>
+				<th v-if="isBurst">Delay between shots</th>
+				<th v-if="isBeam">Beam duration<sup>1</sup></th>
+				<th v-if="isBeam">First tick on Zoltan Shield<sup>1</sup></th>
+				<th v-if="isBeam">Second tick on Zoltan Shield<sup>1</sup></th>
+				<th v-if="isBomb">Time to explode</th>
+			</tr>
+			<tr v-if="weapon">
+				<td>{{ times.initial_delay }}</td>
+				<td v-if="times.speed">{{ times.speed }}</td>
+				<td v-if="times.shot_duration">{{ times.shot_duration }}</td>
+				<td v-if="isBeam">{{ times.tick1 }}</td>
+				<td v-if="isBeam">{{ times.tick2 }}</td>
+			</tr>
+		</table>
+
+		<h2 v-if="times.speed">Time to enemy shields<sup>2</sup></h2>
+
+		<table v-if="times.speed">
+			<tr>
+				<th colspan="3">Any size ship<sup>3</sup></th>
+				<th colspan="3">Engi Scout</th>
+				<th colspan="3">Flagship</th>
+			</tr>
+			<tr>
+				<th>Mean</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Mean</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Mean</th>
+				<th>Min</th>
+				<th>Max</th>
+			</tr>
+			<tr>
+				<td>{{ times.anySizeShields.mean }}</td>
+				<td>{{ times.anySizeShields.min }}</td>
+				<td>{{ times.anySizeShields.max }}</td>
+				<td>{{ times.engiShields.mean }}</td>
+				<td>{{ times.engiShields.min }}</td>
+				<td>{{ times.engiShields.max }}</td>
+				<td>{{ times.flagshipShields.mean }}</td>
+				<td>{{ times.flagshipShields.min }}</td>
+				<td>{{ times.flagshipShields.max }}</td>
+			</tr>
+		</table>
+
+		<p v-if="times.speed"><span class="large">{{ times.weaponSlotTravel }}</span> travel time from back to front weapon mount, Zoltan B</p>
+
+		<p v-if="isBomb">All bombs take 1.7 seconds to explode: 0.95 to teleport off your ship (that’s when the evasion check happens), and 0.75 to finish materialising on the enemy ship and explode.</p>
+
+		<h2 v-if="times.speed">Time to player shields<sup>4</sup></h2>
+
+		<table v-if="times.speed">
+			<tr>
+				<th colspan="3">Any size ship<sup>5</sup></th>
+				<th colspan="3">Engi cruiser</th>
+				<th colspan="3">Crystal cruiser</th>
+			</tr>
+			<tr>
+				<th>Mean</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Mean</th>
+				<th>Min</th>
+				<th>Max</th>
+				<th>Mean</th>
+				<th>Min</th>
+				<th>Max</th>
+			</tr>
+			<tr>
+				<td>{{ times.anyCruiserShields.mean }}</td>
+				<td>{{ times.anyCruiserShields.min }}</td>
+				<td>{{ times.anyCruiserShields.max }}</td>
+				<td>{{ times.engiCruiserShields.mean }}</td>
+				<td>{{ times.engiCruiserShields.min }}</td>
+				<td>{{ times.engiCruiserShields.max }}</td>
+				<td>{{ times.crystalCruiserShields.mean }}</td>
+				<td>{{ times.crystalCruiserShields.min }}</td>
+				<td>{{ times.crystalCruiserShields.max }}</td>
+			</tr>
+		</table>
+
+	</div>
+
+		<ol v-if="weapon" class="unstack footnotes">
+			<li v-if="times.speed">speed is a unitless value from the game files</li>
+			<li v-if="isBeam">does not include firing delay</li>
+			<li v-if="times.speed">includes firing delay. Measured from a forward weapon mount on Kestrel A</li>
+			<li v-if="times.speed">includes firing delay. Measured from an Auto-scout</li>
+			<li v-if="times.speed">just combining the Engi Scout and Flagship results</li>
+			<li v-if="times.speed">just combining the Engi and Crystal results</li>
+		</ol>
+
+</div>
+
+<script src="vue.js"></script>
+<script src="vue-treeselect-0.4.js"></script>
+
+<script src="selectMenuItems.js"></script>
+<script src="weaponsData.js"></script>
+<script src="travelTimes.js"></script>
+<script src="weapons.js"></script>
+</body>
+</html>

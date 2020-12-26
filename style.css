@@ -1,0 +1,143 @@
+html {
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.stack *+* {
+	margin-top: 1.5rem;
+}
+.unstack *+* {
+	margin-top: initial;
+}
+#main {
+	margin-bottom: 2rem;
+}
+
+/* 
+	https://twitter.com/heydonworks/status/1084856193795919874
+*/
+body {
+	padding: 1em;
+	max-width: 60em;
+	margin: 0 auto;
+	font-family: Open Sans;
+	color: white;
+	background: #222;
+}
+h1,h2 {
+	font-weight: normal;
+}
+h1 {
+	font-size: 2.5rem;
+}
+h2 {
+	font-size: 1.75rem;
+}
+
+.weapons-selection {
+	max-width: 60em;
+	justify-content: space-between;
+}
+
+.weapons-selection > * {
+	margin-bottom: 1em;
+	max-width: 20em
+}
+.large {
+	font-size: 1.5rem;
+	/*padding: 0.5rem;*/
+}
+th, td {
+	padding: 0.5em 1em;
+	line-height: 1.5;
+}
+td {
+	background: black;
+	border: 1px solid #777;
+	text-align: center;
+}
+th {
+	background: #333;
+	font-weight: normal;
+	border: 1px solid #777;
+}
+table {
+	margin-top: -0.5em;
+	border-collapse: collapse;
+}
+tr {
+	white-space: nowrap;
+}
+tr+tr {
+	border-top: 1px solid #777;
+}
+.reset {
+	background: #333;
+}
+.controls {
+	margin-top: 2em;
+}
+.control-item {
+	display: block;
+	margin-bottom: 1em;
+}
+.radio-group .control-item {
+	margin-left: 1em;
+}
+input[type=checkbox], input[type=radio] {
+    transform: scale(1.5);
+}
+input[type=number] {
+	margin-left: 1em;
+	font-size: 120%;
+	color: white;
+	background: #333;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 3px;
+}
+
+.numbers {
+	padding-bottom: 2rem;
+	border-bottom: 1px solid grey;
+}
+.footnotes, sup {
+	color: #bbb;
+}
+/* Vue-treeselect overrides */
+
+.vue-treeselect {
+	min-width: 15em;
+	max-width: 20em;
+}
+.vue-treeselect__placeholder {
+	color: #ddd;
+}
+.vue-treeselect__single-value {
+	color: white !important;
+	font-weight: bold !important;
+}
+.vue-treeselect input {
+	color: white;
+}
+.vue-treeselect,
+.vue-treeselect__single-value,
+.vue-treeselect__control,
+.vue-treeselect__menu,
+.vue-treeselect__tip {
+	color: white !important;
+	background: #333 !important;
+}
+.vue-treeselect__option--highlight {
+	background: #222 !important;
+}
+.vue-treeselect__option--selected {
+	background: #111 !important;
+}
+.vue-treeselect__control-arrow,
+.vue-treeselect__option-arrow {
+	color: #fff !important;
+}
