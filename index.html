@@ -47,7 +47,7 @@
 
 		<table v-if="times.speed">
 			<tr>
-				<th colspan="3">Any size ship<sup>3</sup></th>
+				<th colspan="3">Any size ship<sup>4</sup></th>
 				<th colspan="3">Engi Scout</th>
 				<th colspan="3">Flagship</th>
 			</tr>
@@ -79,11 +79,11 @@
 
 		<p v-if="isBomb">All bombs take 1.7 seconds to explode: 0.95 to teleport off your ship (that’s when the evasion check happens), and 0.75 to finish materialising on the enemy ship and explode.</p>
 
-		<h2 v-if="times.speed">Time to player shields<sup>4</sup></h2>
+		<h2 v-if="times.speed">Time to player shields<sup>3</sup></h2>
 
 		<table v-if="times.speed">
 			<tr>
-				<th colspan="3">Any size ship<sup>5</sup></th>
+				<th colspan="3">Any size ship<sup>4</sup></th>
 				<th colspan="3">Engi cruiser</th>
 				<th colspan="3">Crystal cruiser</th>
 			</tr>
@@ -118,8 +118,8 @@
 			<li v-if="isBeam">does not include firing delay</li>
 			<li v-if="times.speed">includes firing delay. Measured from a forward weapon mount on Kestrel A</li>
 			<li v-if="times.speed">includes firing delay. Measured from an Auto-scout</li>
-			<li v-if="times.speed">just combining the Engi Scout and Flagship results</li>
-			<li v-if="times.speed">just combining the Engi and Crystal results</li>
+			<li v-if="times.speed">just combining the other two results</li>
+			
 		</ol>
 
 </div>
