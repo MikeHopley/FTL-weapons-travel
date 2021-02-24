@@ -6,6 +6,8 @@ html {
   box-sizing: inherit;
 }
 
+a {color: white !important;}
+
 .stack *+* {
 	margin-top: 1.5rem;
 }
